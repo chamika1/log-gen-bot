@@ -5,18 +5,20 @@ import json
 import logging
 from typing import Optional
 from io import BytesIO
+from dotenv import load_dotenv
+load_dotenv()
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 # Initialize the bot with your token
-BOT_TOKEN = '7597832602:AAEnlsKpWT2mF2YzVUfKHCza_FLRAobJhiI'
+BOT_TOKEN = os.getenv('BOT_TOKEN')
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # API Configuration
 GETIMG_API_URL = 'https://api.getimg.ai/v1/stable-diffusion-xl/text-to-image'
-GETIMG_API_KEY = 'key-3XbWkFO34FVCQUnJQ6A3qr702Eu7DDR1dqoJOyhMHqhruEhs22KUzR7w631ZFiA5OFZIba7i44qDQEMpKxzegOUm83vCfILb'
+GETIMG_API_KEY = os.getenv('GETIMG_API_KEY')
 
 headers = {
     'Accept': 'application/json',
